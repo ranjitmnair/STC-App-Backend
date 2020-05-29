@@ -33,7 +33,7 @@ def signup():
 
         # flash(f'Account created for {user.name}!', 'success')
         return jsonify("user info added")
-    return jsonify("not corekt")
+  #  return jsonify("not corekt")
     
     return 'unsucessful'
 
