@@ -3,7 +3,7 @@ from flask import Flask, jsonify, request
 from flask_pymongo import PyMongo
 from bson.json_util import dumps
 from bson.objectid import ObjectId
-from datetime import date
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -21,8 +21,9 @@ def upload(domain):
     link3=_json['link3']
 
     if title and (link1 or link2 or link3) and request.method=="POST":
-        today=str(date.today())
-        mongo.db.resources.insert({'domain':domain,'title':title,'date': today,'link1':link1,'link2':link2,'link3':link3})
+        now=datetime.now()
+        today=now.strftime("%d/%m/%Y %H:%M:%S")
+        mongo.db.resources.insert({'domain':domain,'title':title,'datetime': today,'link1':link1,'link2':link2,'link3':link3})
         return jsonify(domain+" resource added")    
     return jsonify("error") 
 @app.route('/resources/<domain>')
