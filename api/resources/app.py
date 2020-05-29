@@ -32,6 +32,24 @@ def display(domain):
     response=dumps(result)
     return response       
 
+#notifs route
+@app.route('/notifications',methods=['GET','POST'])
+def create():
+    _json=request.json
+    title=_json['title']
+    _id=_json['id'] # id such as events meetings etc.
+    body=_json['body'] # content of the notif.
+
+    if title and id and body and request.method=="POST":
+        now=datetime.now()
+        today=now.strftime("%d/%m/%Y %H:%M:%S")
+        mongo.db.notifications.insert({'date':today,'title':title,'id':_id,'body':body})
+        result=mongo.db.notifications.find({'date':today})
+        response=dumps(result)
+        return response
+       # return "notif added"
+    return jsonify("err")
+
 # @app.route('/')
 # def hello():
 #     return jsonify("hello user")
