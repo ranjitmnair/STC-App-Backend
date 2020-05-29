@@ -5,6 +5,7 @@ Backend routes and other stuff regarding the STC App
 - sign in 
 - posts
 - resources
+- notifications
 
 
 ### Route usage:
@@ -16,5 +17,13 @@ Backend routes and other stuff regarding the STC App
   - 'link1'/'link2'/'link3' : links to particular documents.  
   
   /resources/<domain-name> : to display the content of the domain.
+  
+  #### notifications
+  call: /notifications 
+  method POST:
+  - 'title' (title of the notification)
+  - 'date'(datetime automatically generated)
+  - 'id'(id of notif can be added)
+  - 'body'(body of the notif)
 
     
