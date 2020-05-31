@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 app.secret_key = "secretkey"
 
-app.config['MONGO_URI'] = "mongodb://localhost:27017/Master"
+app.config['MONGO_URI'] = "mongodb://localhost:27017/SignUP"
 mongo = PyMongo(app)
 
 @app.route('/signup', methods=['POST'])
