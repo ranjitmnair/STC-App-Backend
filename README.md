@@ -1,9 +1,9 @@
 # STC-App-Backend
 Backend routes and other stuff regarding the STC App
 
-``` pip install flask```
-``` pip install flask-pymongo ```
-``` pip install pymongo[srv]``` ~ for global cluster in Atlas.
+-``` pip install flask```
+-``` pip install flask-pymongo ```
+-``` pip install pymongo[srv]``` ~ for global cluster in Atlas.
 
 ## Routes (only designed by custom backend- Flask) 
 - posts
@@ -22,10 +22,11 @@ Backend routes and other stuff regarding the STC App
   
   #### posts
    /posts/upload method POST:
-    - 'date'(datetime automatically generated)
-    - 'photos' upload single photo. stored in db
+  - 'date'(datetime automatically generated)
+  - 'photos' upload single photo. stored in db
   
   /posts/'filename':  method: GET to retrieve single post by its filename
+  
   - eg: /posts/image.JPG
   
   
