@@ -39,28 +39,23 @@ def display(domain):
 @app.route('/posts/upload', methods=['POST'])
 def posts():
     _json = request.json
-    title = _json['title']
-    domain = _json['domain']
-    category = _json['category']
-    _photos = request.files['photos']
+    photos = request.files['photos']
     
     if request.method =="POST":
-        mongo.save_file(_photos.filename, _photos)
+        mongo.save_file(photos.filename, photos)
         now=datetime.now()
         today=now.strftime("%d/%m/%Y %H:%M:%S")
         mongo.db.posts.insert(
             {
-                'title':title, 'domain':domain, 'category':category,'date':today    
+                'date':today,'filename': photos.filename    
             }
         )
         return jsonify('post added succesfully')
     return jsonify('unsucessful')
 
-@app.route('/posts/<title>')
-def getposts(title):
-    return mongo.send_file(title)
-    
-
+@app.route('/posts/<filename>')
+def getposts(filename):
+    return mongo.send_file(filename)
 
 
 if __name__ == "__main__":
